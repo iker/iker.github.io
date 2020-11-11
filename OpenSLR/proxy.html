@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <title>Onekin's proxy for Neo4j guides</title>
+  <link rel="shortcut icon" href="./img/onekin_logo.png" />
+  <link rel="stylesheet" type="text/css" href="./css/oslr.css">
+<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<!--   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+<script src="https://cdn.neo4jlabs.com/neovis.js/master/neovis.js"></script>
+<script src="./js/neo4j-web.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/lodash.js"></script>
+<script src="./js/oslr_guide.js"></script>
+
+</head>
+<body>
+<div id = "menu">
+  <h1><a href="http://onekin.org/" target="_blank"><img src="./img/onekin_logo.png" alt="onekin logo" width="80">Onekin</a>'s proxy for Neo4j guides<button id="help" class="w3-button w3-black w3-display-left">?</button>
+      <small class="rightly">
+        <small><small><small><small >Status:
+        <img src="./img/neo4j_logo.png" id='connectionIcon' class="icon" alt="Engine" >
+        <span id="connection-management-status">No connected Neo4j engine....
+        </span>
+        <img src="./img/w3cannotation.png" id='w3cIcon' class="icon" alt="W3c" >
+        <span id="data-model-status">No data model compliance.
+        </span>
+          </small></small></small></small></small>
+</h1>
+</div>
+
+<small class="rightly"><button id="toggle">Toggle between Slides and Console</button></small>
+
+<div  id = "contentbody">
+  <div id="slidesdiv"  class="consoling">
+  <div hidden>
+<!--  <div  id="anulableGuide" class="colorea">
+      <input class="button" type="submit" value=":play" id="play">
+      <input id="guideurl" name="url" type="text" value="https://portal.graphgist.org/graph_gists/open-slr-gqm-for-auditability-on-slrs-data-extraction-process-candidate/graph_guide" />
+<input id="guideurl" name="url" type="text" value="file:///Users/iker/Dropbox/OPENSLR/Development/oslr/graph_guide.html" />
+<input id="guide" name="url" type="text" value="https://raw.githubusercontent.com/onekin/OpenSLR/master/graphgist/oslr_guide.html" />
+<input id="guide" name="url" type="text" value="oslr_guide2.html" />-->
+
+</div>
+</div><!--end hidden>-->
+<div>
+  <h3>
+  Guide slides: <span id = "num">0</span>/<span id = "numtotal">0</span>
+  <button id="ezker" class="w3-button w3-black w3-display-left">&#10094;</button>
+      <button id="eskuin"  class="w3-button w3-black w3-display-right">&#10095;</button>
+     </h3>
+ </div>
+
+
+<div id="slides">
+    <slide>Click :play button to load a Neo4J guide </slide>
+</div>
+</div><!--end slidesdiv-->
+
+
+<div class="description" id= "descriptiondiv">
+
+  <div class="consoling">
+<h3>  Cypher query console:
+<button id="run-button" type="button" class="btn btn-primary" disabled="disabled">Run
+</button><small class="rightly" >Data Model: </small> </h3>
+
+     <textarea  class="form-control" id="cypher" title="Cypher query">MATCH (a)
+RETURN a limit 3</textarea>
+      <img src="./img/w3cannotationDM.png" id="datamodel" alt="Data model">
+        </div>
+
+</div>
+<div class="entry">
+Query result:
+            <!-- [NAVIGATION] -->
+      <!-- Add your navigation tabs here -->
+      <nav id="tab-nav">
+        <span class="tabnav">Tabular view</span>
+    <!--    <span class="tabnav">Neo4j Graph view</span>
+        <span class="tabnav">Graphics view</span>
+        <span class="tabnav">JSON view</span> -->
+      </nav>
+
+      <!-- [CONTENTS] -->
+      <!-- Must have the corresponding text block -->
+      <div id="tab-contents">
+        <div id="tables">
+          <table id="result" class="result table table-hover">
+              <thead id="result-head" class="thead-dark"></thead>
+              <tbody id="result-body"></tbody>
+              <tfoot id="result-foot" class="thead-dark"></tfoot>
+          </table>
+        </div>
+        <div class="tabtxt">
+          <button id="draw" type="button" class="btn btn-primary" onclick="draw()">Draw</button>
+          <div id="viz" style="float:left"></div>
+        </div>
+        <div class="tabtxt">
+          GRAPHICS VISUALIZATION
+        </div>
+        <div class="tabtxt">
+          JSON.STRINGIFY VISULALIZATION
+        </div>
+      </div>
+</div> <!--end entry>-->
+</div><!--end contentbody>-->
+
+
+<div id = "prefooter">
+</div>
+<div id = "footer">
+<hr/>
+<a href="http://onekin.org/" target="_blank"><img src="./img/onekin_logo.png" alt="onekin logo" width="100"></a>
+Attribution: This work is based on this technologies and resources:
+<a href="https://neo4j.com/" target="_blank"><img src="./img/neo4j_logo.png"  alt="Neo4j" width="80" height="30"></a>
+<a href="https://github.com/neo4j-contrib/neovis.js/" target="_blank"><img src="./img/neoviz_logo.png"  alt="NeoVis.js" width="80" height="30"></a>
+<a href="https://future-architect.github.io/cheetah-grid/documents/" target="_blank"><img src="./img/cheetahgrid_logo.png"  alt="Cheetah Grid" width="80" height="30"></a>
+<a href="https://www.iconfinder.com/iconsets/logos-brands-5" target="_blank"><img src="https://cdn.iconfinder.com/static/img/logo/white.svg?d0036af2c3"  alt="Iconfinder" width="80" height="30"></a>
+
+</div>
+<script src="./js/oslr.js"></script>
+</body>
+</html>
