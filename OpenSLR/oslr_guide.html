@@ -259,7 +259,8 @@ In addition, it can be "played" as a guided tour into Neo4j. Copy and paste the 
 
       <pre mode="cypher" class="highlight pre-scrollable code runnable standalone-example ng-binding" lang="">
         <code class="cypher language-cypher">MATCH (n) detach delete (n);
-          CREATE INDEX IF NOT EXISTS ON :Resource(uri);
+          DROP CONSTRAINT n10s_unique_uri IF EXISTS;
+          CREATE CONSTRAINT n10s_unique_uri  IF NOT EXISTS  ON (r:Resource) ASSERT r.uri IS UNIQUE;
 UNWIND [{_id:0, properties:{`http://www.w3.org/1999/02/22-rdf-syntax-ns#`:"rdf", `http://purl.org/spar/datacite/`:"datacite", `http://www.w3.org/2000/01/rdf-schema#`:"rdfs", `http://purl.org/dc/elements/1.1/`:"dc", `http://purl.org/dc/terms/`:"dcterms", `http://www.w3.org/ns/oa#`:"oa", `http://www.w3.org/ns/activitystreams#`:"as", `http://www.w3.org/2002/07/owl#`:"owl", `http://www.w3.org/ns/prov#`:"prov", `http://www.w3.org/2004/02/skos/core#`:"skos", `http://www.w3.org/ns/shacl#`:"sh", `http://rdf.onekin.org/resources/ns/`:"onekin", `http://xmlns.com/foaf/0.1/`:"foaf"}}] as row CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:NamespacePrefixDefinition;
 UNWIND [{_id:"slr__codebookDevelopment", properties:{uri:"http://rdf.onekin.org/resource/ns/slr/codebookDevelopment"}}, {_id:"oa__linking", properties:{uri:"http://www.w3.org/ns/oa#linking"}}, {_id:"oa__assessing", properties:{uri:"http://www.w3.org/ns/oa#assessing"}}, {_id:"oa__classifying", properties:{uri:"http://www.w3.org/ns/oa#classifying"}}] as row CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Resource;
 UNWIND [{_id:"Alice", properties:{uri:"http://neo4j.com/base/Alice"}}, {_id:"Bob", properties:{uri:"http://neo4j.com/base/Bob"}}, {_id:"Carol", properties:{uri:"http://neo4j.com/base/Carol"}}, {_id:"David", properties:{uri:"http://neo4j.com/base/David"}}, {_id:"void", properties:{}}] as row
