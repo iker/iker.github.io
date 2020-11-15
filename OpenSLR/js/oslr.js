@@ -5,6 +5,7 @@ var slideIndex = 1;
 var itIsDisconnected= true;
 var host = null;
 var token = null;
+var db = null;
 var viz;
 var fields = null;
 var globalCypher = null;
@@ -103,6 +104,7 @@ tab.init ()
     //URL params:
      host = getUrlParam('host', 'http://localhost:7474');
      token = getUrlParam('token', 'YWRtaW46b25la2lu');   //YWRtaW46b25la2lu   admin:onekin
+     db = getUrlParam('db', 'neo4j');   //YWRtaW46b25la2lu   admin:onekin
      dataModelNoCompliance();
      counter = 0;
      connect();
@@ -239,7 +241,7 @@ function showSlide(n) {
   if (n < 1) {slideIndex = x.length}
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";
-  }  
+  }
   x[slideIndex-1].style.display = "block";
    $( "#num" ).html(slideIndex);
    $( "#numtotal" ).html (x.length);
@@ -325,14 +327,14 @@ $( "#slides" ).load( url , function( response, status, xhr ) {
     //console.log( err.length )
     if (!_.isUndefined(rsp) && (_.isUndefined(err) || err.length == 0)){
       connectedToNeo4j();
-      setConnectionManagementStatus("Connected to back-end at " + host +" with token " + token);
+      setConnectionManagementStatus("Connected to "+ db + " back-end at " + host +" with token " + token);
     }else{
       //console.log("ERROR:v: ")
       //console.log("err:: "+JSON.stringify (err))
       //console.log("rsp:: "+JSON.stringify (rsp))
       disconnectedFromNeo4j()
-      setConnectionManagementStatus("Unable to connected to back-end at " + host +" with token " + token)
-      new Error("Unable to connected to back-end at " + host +" with token " + token)
+      setConnectionManagementStatus("Unable to connected to "+ db + " back-end at " + host +" with token " + token)
+      new Error("Unable to connected to "+ db + " back-end at " + host +" with token " + token)
   }
 }
 
@@ -679,7 +681,7 @@ function commitNeo4J (query, callback) {
   let settings = {
     'async': true,
     'crossDomain': true,
-    'url': host + '/db/neo4j/tx/commit',
+    'url': host + '/db/'+db+'/tx/commit',
     'method': 'POST',
     'headers': {
       'authorization': 'Basic ' + token, // admin:onekin https://www.base64decode.org/   https://neo4j.com/docs/http-api/3.5/security/
