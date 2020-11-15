@@ -153,7 +153,17 @@ button {
 }
 .linklike:hover {
      text-decoration:none;
-     text-shadow: 1px 1px 1px #555;
+     text-shadow: 0.5px 0.5px 0.5px #555;
+}
+
+.area {
+   cursor:pointer;
+   color:blue;
+   text-decoration:underline;
+}
+.area:hover {
+   text-decoration:none;
+   text-shadow: 0.5px 0.5px 0.5px #555;
 }
 
 

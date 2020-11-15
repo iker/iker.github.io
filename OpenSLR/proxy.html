@@ -7,13 +7,19 @@
   <link rel="stylesheet" type="text/css" href="./css/oslr.css">
 <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<!--   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.0/jquery.maphilight.min.js"></script>
+
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<!-- DELETE
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <script src="https://cdn.neo4jlabs.com/neovis.js/master/neovis.js"></script>
 <script src="./js/neo4j-web.min.js"></script>
+-->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="./js/lodash.js"></script>
-<script src="./js/oslr_guide.js"></script>
+
 
 </head>
 <body>
@@ -31,10 +37,10 @@
 </h1>
 </div>
 
-<small class="rightly"><button id="toggle">Toggle between Slides and Console</button></small>
 
 <div  id = "contentbody">
   <div id="slidesdiv"  class="consoling">
+    <a  href="#" onclick="showSlide(1)"><img  width="25" height="25" src="./img/home.ico" alt="Home"/>Home</a>
   <div hidden>
 <!--  <div  id="anulableGuide" class="colorea">
       <input class="button" type="submit" value=":play" id="play">
@@ -43,15 +49,14 @@
 <input id="guide" name="url" type="text" value="https://raw.githubusercontent.com/onekin/OpenSLR/master/graphgist/oslr_guide.html" />
 <input id="guide" name="url" type="text" value="oslr_guide2.html" />-->
 
-</div>
-</div><!--end hidden>-->
-<div>
+
   <h3>
   Guide slides: <span id = "num">0</span>/<span id = "numtotal">0</span>
   <button id="ezker" class="w3-button w3-black w3-display-left">&#10094;</button>
       <button id="eskuin"  class="w3-button w3-black w3-display-right">&#10095;</button>
      </h3>
  </div>
+</div><!--end hidden>-->
 
 
 <div id="slides">
@@ -59,6 +64,7 @@
 </div>
 </div><!--end slidesdiv-->
 
+<small class="rightly"><button id="toggle">Show/hide query console</button></small>
 
 <div class="description" id= "descriptiondiv">
 
@@ -102,7 +108,7 @@ Query result:
           GRAPHICS VISUALIZATION
         </div>
         <div class="tabtxt">
-          JSON.STRINGIFY VISULALIZATION
+          JSON.STRINGIFY VISUALIZATION
         </div>
       </div>
 </div> <!--end entry>-->
@@ -121,6 +127,36 @@ Attribution: This work is based on this technologies and resources:
 <a href="https://www.iconfinder.com/iconsets/logos-brands-5" target="_blank"><img src="https://cdn.iconfinder.com/static/img/logo/white.svg?d0036af2c3"  alt="Iconfinder" width="80" height="30"></a>
 
 </div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.0/jquery.maphilight.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+var  options = {
+fill: true,
+fillColor: '000000',
+fillOpacity: 0.2,
+stroke: true,
+strokeColor: 'ff0000',
+strokeOpacity: 1,
+strokeWidth: 3,
+fade: true,
+alwaysOn: false,
+neverOn: false,
+groupBy: false,
+wrapClass: true,
+shadow: true,
+shadowX: 10,
+shadowY: 10,
+shadowRadius: 6,
+shadowColor: '000000',
+shadowOpacity: 0.8,
+shadowPosition: 'outside',
+shadowFrom: false
+}
+$('#gqm').maphilight(options);
+
+  });
+</script>
 <script src="./js/oslr.js"></script>
 </body>
 </html>

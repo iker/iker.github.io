@@ -230,6 +230,21 @@ function showDivs(n) {
    $( "#numtotal" ).html (x.length);
 }
 
+
+function showSlide(n) {
+  var i;
+  var x = $( "slide" );
+  slideIndex= n;
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }  
+  x[slideIndex-1].style.display = "block";
+   $( "#num" ).html(slideIndex);
+   $( "#numtotal" ).html (x.length);
+}
+
 function injectExecutionButtons(){
   var x = $( "pre.code" );
   for (i = 0; i < x.length; i++) {
